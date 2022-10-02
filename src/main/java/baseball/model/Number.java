@@ -16,4 +16,8 @@ public class Number {
     public String getRandomNum() {
         return randomNum;
     }
+
+    public void setPlayerNum(String playerNum) {
+        this.playerNum = playerNum;
+    }
 }

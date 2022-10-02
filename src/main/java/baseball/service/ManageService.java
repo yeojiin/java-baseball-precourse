@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.constant.CommonConstant;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
@@ -31,5 +32,9 @@ public class ManageService {
     private int getRandomNumber() {
         int randomNumber = Randoms.pickNumberInRange(commonConstant.MIN_NUM, commonConstant.MAX_NUM);
         return randomNumber;
+    }
+
+    public String getReadLine() {
+        return Console.readLine();
     }
 }
