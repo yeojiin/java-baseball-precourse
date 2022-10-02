@@ -11,4 +11,7 @@ public class CommonConstant {
     public static final String SPACE = " ";
     public static final String NULL = "";
 
+    public static final String INPUT_NUM = "숫자를 입력해주세요 : ";
+    public static final String SUCCESS_END_GAME ="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
 }

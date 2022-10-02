@@ -1,7 +1,9 @@
 package baseball.view;
 
+import baseball.constant.CommonConstant;
+
 public class InputView {
     public static void inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(CommonConstant.INPUT_NUM);
     }
 }

@@ -6,6 +6,7 @@ import baseball.model.Message;
 import baseball.model.Number;
 import baseball.service.ManageService;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class GameController {
 
@@ -28,8 +29,13 @@ public class GameController {
 
           baseball = manageService.getAnswer(number.getPlayerNum(), number.getRandomNum());
           Message message = new Message(baseball);
-      }
 
+          OutputView.printResult(message.getResultMeesage());
+          if(baseball.isEnd()) {
+              OutputView.printEnd();
+          }
+
+      }
     }
 }
 

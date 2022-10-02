@@ -4,45 +4,44 @@ import baseball.constant.CommonConstant;
 
 public class Message {
 
-    private String blankString = CommonConstant.NULL;
+    private StringBuilder message;
 
     public Message (Baseball baseball) {
-        StringBuilder message = new StringBuilder();
+        message = new StringBuilder();
 
-        message.append(appendBallResult(baseball));
-        message.append(appendSpace(baseball));
-        message.append(appendStrikeResult(baseball));
-        message.append(appendNothing(baseball));
+        appendBallResult(baseball);
+        appendSpace(baseball);
+        appendStrikeResult(baseball);
+        appendNothing(baseball);
     }
 
-    private String appendBallResult(Baseball baseball) {
+    private void appendBallResult(Baseball baseball) {
         if(baseball.getBallCnt() > 0) {
-            return baseball.getBallCnt() + CommonConstant.BALL;
+            String ballResult = baseball.getBallCnt() + CommonConstant.BALL;
+            message.append(ballResult);
         }
-        return blankString;
     }
 
-    private String appendStrikeResult(Baseball baseball) {
+    private void appendStrikeResult(Baseball baseball) {
         if(baseball.getStrikeCnt() > 0) {
-            return baseball.getStrikeCnt() + CommonConstant.STRIKE;
+            String strikeResult = baseball.getStrikeCnt() + CommonConstant.STRIKE;
+            message.append(strikeResult);
         }
-        return blankString;
     }
 
-    private String appendSpace(Baseball baseball) {
+    private void appendSpace(Baseball baseball) {
         if(baseball.getBallCnt() > 0 && baseball.getStrikeCnt() > 0) {
-            return CommonConstant.SPACE;
+            message.append(CommonConstant.SPACE);
         }
-        return blankString;
     }
 
-    private String appendNothing(Baseball baseball) {
+    private void appendNothing(Baseball baseball) {
         if(baseball.isNothing()) {
-            return CommonConstant.NOTHING;
+            message.append(CommonConstant.NOTHING);
         }
-        return blankString;
     }
 
-
-
+    public String getResultMeesage() {
+        return message.toString();
+    }
 }
