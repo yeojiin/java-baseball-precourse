@@ -24,6 +24,8 @@ public class GameController {
       while(!baseball.isEnd()) {
           InputView.inputNumber();
           number.setPlayerNum(manageService.getReadLine());
+
+          baseball = manageService.getAnswer(number.getPlayerNum(), number.getRandomNum());
       }
 
     }

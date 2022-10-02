@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.constant.CommonConstant;
+import baseball.model.Baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -36,5 +37,31 @@ public class ManageService {
 
     public String getReadLine() {
         return Console.readLine();
+    }
+
+    public Baseball getAnswer(String playerNum, String randomNum) {
+        int strikeCnt = answerStrike(playerNum, randomNum);
+        int ballCnt = answerBall(playerNum, randomNum);
+
+
+        return new Baseball(ballCnt, strikeCnt, false, false);
+
+    }
+
+    private int answerStrike(String playerNums, String randomNums) {
+        int strikeCnt = 0;
+        for(int i = 0; i < randomNums.length(); i++) {
+            char playerNum = playerNums.charAt(i);
+            char randomNum = randomNums.charAt(i);
+
+            strikeCnt += playerNum == randomNum ? 1 : 0;
+        }
+        return strikeCnt;
+    }
+
+    private int answerBall(String playerNums, String randomNums) {
+        int ballCnt = 0;
+
+        return ballCnt;
     }
 }
