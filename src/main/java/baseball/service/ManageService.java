@@ -61,6 +61,12 @@ public class ManageService {
 
     private int answerBall(String playerNums, String randomNums) {
         int ballCnt = 0;
+        for(int j = 0; j < randomNums.length(); j++) {
+            char playerNum = playerNums.charAt(j);
+            char randomNum = randomNums.charAt(j);
+
+            ballCnt += randomNums.contains(String.valueOf(playerNum)) && playerNum != randomNum ? 1 : 0;
+        }
 
         return ballCnt;
     }
