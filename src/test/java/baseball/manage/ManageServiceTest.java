@@ -21,9 +21,9 @@ public class ManageServiceTest {
         manageService = config.manageService();
     }
 
-    @DisplayName("야구게임 결과 출력")
+    @DisplayName("정상 야구게임 결과 출력")
     @ParameterizedTest
-    @CsvSource(value = {"615:1볼"}, delimiter = ':')
+    @CsvSource(value = {"615:1볼", "892:1스트라이크", "765:낫싱", "813:2볼 1스트라이크", "831:3스트라이크"}, delimiter = ':')
     public void compareTest(String playerNum, String expectedAnswer) {
         String randomNum = "831";
         Baseball baseball = manageService.getAnswer(playerNum, randomNum);
