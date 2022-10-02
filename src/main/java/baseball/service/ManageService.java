@@ -13,19 +13,19 @@ public class ManageService {
 
     public String setRandomNumber(int length) {
         Set<Integer> randomNums = new HashSet<>();
-        randomNums = addUniqueNumbers(randomNums, length);
+        randomNums = addUniqueNums(randomNums, length);
 
-        StringBuilder stringRandomNumbers = new StringBuilder();
+        StringBuilder stringRandomNums = new StringBuilder();
         for(Integer num : randomNums) {
-            stringRandomNumbers.append(num);
+            stringRandomNums.append(num);
         }
-        return stringRandomNumbers.toString();
+        return stringRandomNums.toString();
     }
 
-    private Set<Integer> addUniqueNumbers(Set<Integer> randomNums, int length) {
+    private Set<Integer> addUniqueNums(Set<Integer> randomNums, int length) {
         randomNums.add(getRandomNumber());
         if(randomNums.size() < length) {
-            addUniqueNumbers(randomNums, length);
+            addUniqueNums(randomNums, length);
         }
         return randomNums;
     }
@@ -39,34 +39,52 @@ public class ManageService {
         return Console.readLine();
     }
 
-    public Baseball getAnswer(String playerNum, String randomNum) {
-        int strikeCnt = answerStrike(playerNum, randomNum);
-        int ballCnt = answerBall(playerNum, randomNum);
 
-        return Baseball.getBaseballAnswer(ballCnt, strikeCnt);
 
+    public void checkPlayerNum(String playerNum) {
+        checkEmpty(playerNum);
+        checkLength(playerNum);
+        checkType(playerNum);
+        checkZeroNum(playerNum);
+        checkDuplicateNum(playerNum);
     }
 
-    private int answerStrike(String playerNums, String randomNums) {
-        int strikeCnt = 0;
-        for(int i = 0; i < randomNums.length(); i++) {
-            char playerNum = playerNums.charAt(i);
-            char randomNum = randomNums.charAt(i);
-
-            strikeCnt += playerNum == randomNum ? 1 : 0;
+    private void checkEmpty(String str) {
+        if (str == null || str.equals("")) {
+            throw new IllegalArgumentException(CommonConstant.NOT_AVAILABLE_EMPTY_NUM);
         }
-        return strikeCnt;
     }
 
-    private int answerBall(String playerNums, String randomNums) {
-        int ballCnt = 0;
-        for(int j = 0; j < randomNums.length(); j++) {
-            char playerNum = playerNums.charAt(j);
-            char randomNum = randomNums.charAt(j);
+    private void checkLength(String str) {
+        if (str.length() != CommonConstant.NUMBER_LENGTH) {
+            throw new IllegalArgumentException(CommonConstant.WRONG_LENGTH);
+        }
+    }
 
-            ballCnt += randomNums.contains(String.valueOf(playerNum)) && playerNum != randomNum ? 1 : 0;
+    private void checkType(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException ne) {
+            throw new IllegalArgumentException(CommonConstant.WRONG_TYPE);
+        }
+    }
+
+    private void checkZeroNum(String str) {
+        if (str.contains(CommonConstant.ZERO)) {
+            throw new IllegalArgumentException(CommonConstant.COMMON_INVALID_ERROR);
+        }
+    }
+
+    private void checkDuplicateNum(String str) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            uniqueNumbers.add(Integer.parseInt(String.valueOf(str.charAt(i))));
         }
 
-        return ballCnt;
+        if (str.length() != uniqueNumbers.size()) {
+            throw new IllegalArgumentException(CommonConstant.NOT_AVAILABLE_DUPLICATE_NUM);
+        }
     }
+
+
 }

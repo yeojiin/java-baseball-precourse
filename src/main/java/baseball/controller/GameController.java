@@ -4,6 +4,7 @@ import baseball.constant.CommonConstant;
 import baseball.model.Baseball;
 import baseball.model.Message;
 import baseball.model.Number;
+import baseball.service.AnswerService;
 import baseball.service.ManageService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -12,13 +13,19 @@ public class GameController {
 
     private Baseball baseball;
     private Number number;
+    private AnswerService answerService;
     private ManageService manageService;
     private CommonConstant commonConstant;
 
 
     public void gameSetting() {
+        baseball = Baseball.initBaseBall();
         manageService.setRandomNumber(commonConstant.NUMBER_LENGTH);
-        gameStart();
+
+        while(baseball.isAvailableStart()) {
+            gameStart();
+        }
+
 
     }
 
@@ -27,7 +34,9 @@ public class GameController {
           InputView.inputNumber();
           number.setPlayerNum(manageService.getReadLine());
 
-          baseball = manageService.getAnswer(number.getPlayerNum(), number.getRandomNum());
+          manageService.checkPlayerNum(number.getPlayerNum());
+
+          baseball = answerService.getAnswer(number.getPlayerNum(), number.getRandomNum());
           Message message = new Message(baseball);
 
           OutputView.printResult(message.getResultMeesage());
