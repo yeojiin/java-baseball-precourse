@@ -3,12 +3,10 @@ package baseball.model;
 import baseball.constant.CommonConstant;
 
 public class Message {
-
     private StringBuilder message;
 
     public Message (Baseball baseball) {
         message = new StringBuilder();
-
         appendBallResult(baseball);
         appendSpace(baseball);
         appendStrikeResult(baseball);
