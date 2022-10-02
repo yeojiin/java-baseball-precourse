@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.constant.CommonConstant;
 import baseball.model.Baseball;
+import baseball.model.Message;
 import baseball.model.Number;
 import baseball.service.ManageService;
 import baseball.view.InputView;
@@ -26,6 +27,7 @@ public class GameController {
           number.setPlayerNum(manageService.getReadLine());
 
           baseball = manageService.getAnswer(number.getPlayerNum(), number.getRandomNum());
+          Message message = new Message(baseball);
       }
 
     }
