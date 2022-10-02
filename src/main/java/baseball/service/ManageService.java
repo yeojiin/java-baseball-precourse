@@ -49,6 +49,12 @@ public class ManageService {
         checkDuplicateNum(playerNum);
     }
 
+    public void checkRestartGameNumber(String str) {
+        if (!(str.equals(CommonConstant.AGREE_RESTART) || str.equals(CommonConstant.DISAGREE_RESTART))) {
+            throw new IllegalArgumentException(CommonConstant.COMMON_INVALID_ERROR);
+        }
+    }
+
     private void checkEmpty(String str) {
         if (str == null || str.equals("")) {
             throw new IllegalArgumentException(CommonConstant.NOT_AVAILABLE_EMPTY_NUM);
@@ -85,6 +91,7 @@ public class ManageService {
             throw new IllegalArgumentException(CommonConstant.NOT_AVAILABLE_DUPLICATE_NUM);
         }
     }
+
 
 
 }

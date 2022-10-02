@@ -26,7 +26,7 @@ public class Baseball {
     }
 
     public static Baseball initBaseBall() {
-        return new Baseball(0,0,false, false, true);
+        return new Baseball(0, 0, false, false, true);
     }
 
     public static Baseball getBaseballAnswer(int ballCnt, int strikeCnt) {
@@ -45,15 +45,14 @@ public class Baseball {
     public boolean isNothing() {
         return isNothing;
     }
+
     public boolean isEnd() {
         return isEnd;
     }
+
     public boolean isAvailableStart() {
         return availableStart;
     }
-
-
-
 
 
 }

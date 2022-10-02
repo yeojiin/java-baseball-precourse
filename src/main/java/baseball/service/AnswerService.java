@@ -10,7 +10,7 @@ public class AnswerService {
         return Baseball.getBaseballAnswer(ballCnt, strikeCnt);
     }
 
-    private int answerStrike(String playerNums, String randomNums) {
+    public int answerStrike(String playerNums, String randomNums) {
         int strikeCnt = 0;
         for(int i = 0; i < playerNums.length(); i++) {
             char playerNum = playerNums.charAt(i);
@@ -21,7 +21,7 @@ public class AnswerService {
         return strikeCnt;
     }
 
-    private int answerBall(String playerNums, String randomNums) {
+    public int answerBall(String playerNums, String randomNums) {
         int ballCnt = 0;
         for(int i=0; i < playerNums.length(); i++) {
             char playerNum = playerNums.charAt(i);

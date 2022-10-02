@@ -9,6 +9,10 @@ public class Number {
         this.randomNum = randomNum;
     }
 
+    public static Number initNumber(String randomNum) {
+        return new Number(null, randomNum);
+    }
+
     public String getPlayerNum() {
         return playerNum;
     }
