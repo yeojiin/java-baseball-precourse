@@ -23,11 +23,11 @@ public class AnswerService {
 
     private int answerBall(String playerNums, String randomNums) {
         int ballCnt = 0;
-        for(int j = 0; j < playerNums.length(); j++) {
-            char playerNum = playerNums.charAt(j);
-            char randomNum = randomNums.charAt(j);
+        for(int i=0; i < playerNums.length(); i++) {
+            char playerNum = playerNums.charAt(i);
+            char randomNum = randomNums.charAt(i);
 
-            ballCnt += randomNums.contains(String.valueOf(playerNum)) && playerNum != randomNum ? 1 : 0;
+            ballCnt += randomNums.contains(String.valueOf(playerNum)) && randomNum != playerNum ? 1 : 0;
         }
 
         return ballCnt;

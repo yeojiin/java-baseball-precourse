@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.constant.CommonConstant;
+
 public class Baseball {
     private int ballCnt;
     private int strikeCnt;
@@ -28,7 +30,7 @@ public class Baseball {
     }
 
     public static Baseball getBaseballAnswer(int ballCnt, int strikeCnt) {
-        return new Baseball(ballCnt, strikeCnt, ballCnt == 0 && strikeCnt == 0, strikeCnt == 3);
+        return new Baseball(ballCnt, strikeCnt, ballCnt == 0 && strikeCnt == 0, strikeCnt == CommonConstant.NUMBER_LENGTH);
     }
 
 
