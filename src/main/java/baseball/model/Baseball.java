@@ -13,6 +13,9 @@ public class Baseball {
         this.isEnd = isEnd;
     }
 
+    public static Baseball getBaseballAnswer(int ballCnt, int strikeCnt) {
+        return new Baseball(ballCnt, strikeCnt, ballCnt == 0 && strikeCnt == 0, strikeCnt == 3);
+    }
 
     public int getBallCnt() {
         return ballCnt;

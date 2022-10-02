@@ -43,8 +43,7 @@ public class ManageService {
         int strikeCnt = answerStrike(playerNum, randomNum);
         int ballCnt = answerBall(playerNum, randomNum);
 
-
-        return new Baseball(ballCnt, strikeCnt, false, false);
+        return Baseball.getBaseballAnswer(ballCnt, strikeCnt);
 
     }
 
