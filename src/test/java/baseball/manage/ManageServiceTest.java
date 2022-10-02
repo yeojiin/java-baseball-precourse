@@ -5,10 +5,12 @@ import baseball.model.Baseball;
 import baseball.model.Config;
 import baseball.model.Message;
 import baseball.service.ManageService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -30,6 +32,16 @@ public class ManageServiceTest {
         String result = new Message(baseball).getResultMeesage();
 
         assertEquals(expectedAnswer, result);
+    }
+
+    @DisplayName("야구게임 입력 값 오류 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"1234", "a1a", "A23", "!23", "1ㅎ3", "", "23", "012"})
+    public void validatePlayGameNumberTest(String val) {
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> manageService.checkPlayerNum(val)
+        );
     }
 
 }
