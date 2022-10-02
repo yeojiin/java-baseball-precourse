@@ -66,7 +66,7 @@ public class GameController {
 
     private void initGame() {
         baseball = Baseball.initBaseBall();
-        number = Number.initNumber(systemService.setRandomNumber(commonConstant.NUMBER_LENGTH));
+        number = Number.initNumber(systemService.setRandomNumber(CommonConstant.NUMBER_LENGTH));
     }
 
 }
