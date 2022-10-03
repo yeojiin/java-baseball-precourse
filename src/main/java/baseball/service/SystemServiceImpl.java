@@ -16,7 +16,7 @@ public class SystemServiceImpl implements SystemService {
         randomNums = addUniqueNums(randomNums, length);
 
         StringBuilder stringRandomNums = new StringBuilder();
-        for(Integer num : randomNums) {
+        for (Integer num : randomNums) {
             stringRandomNums.append(num);
         }
         return stringRandomNums.toString();
@@ -24,7 +24,7 @@ public class SystemServiceImpl implements SystemService {
 
     private Set<Integer> addUniqueNums(Set<Integer> randomNums, int length) {
         randomNums.add(getRandomNum());
-        if(randomNums.size() < length) {
+        if (randomNums.size() < length) {
             addUniqueNums(randomNums, length);
         }
         return randomNums;
